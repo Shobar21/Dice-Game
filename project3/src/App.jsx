@@ -1,20 +1,16 @@
 // import styled from 'styled-components'
 
+import Gameplay from './components/Gameplay'
 import Homepage from './components/Homepage'
-
-// const Button = styled.button`
-//   background-color: black;
-//   color: white;
-//   padding: 20px;
-// `
+import { useState } from 'react'
 
 function App() {
-  return (
-    <>
-      <Homepage />
-      {/* <Button>This is a Styled components</Button> */}
-    </>
-  )
+  const [Playnow, setPlaynow] = useState(false)
+
+  const toggleGamePlay = () => {
+    setPlaynow((prev) => !prev)
+  }
+  return <>{Playnow ? <Gameplay /> : <Homepage toggle={toggleGamePlay} />}</>
 }
 
 export default App
