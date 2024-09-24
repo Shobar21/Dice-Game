@@ -11,7 +11,7 @@ function NumberSelect() {
         {arr.map((value, i) => (
           <Box
             key={i}
-            isSelected={selectedNumber === value}
+            isSelected={selectedNumber === value} //prps
             onClick={() => setSelectedNumber(value)}
           >
             {value}
