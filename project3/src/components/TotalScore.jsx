@@ -13,10 +13,10 @@ const Container = Styled.div`
         font-weight: 500
     }
 `
-function TotalScore() {
+function TotalScore({ score }) {
   return (
     <Container>
-      <h1>0</h1>
+      <h1>{score}</h1>
       <p>Total Score</p>
     </Container>
   )

@@ -7,19 +7,8 @@ import dice4 from '../images/dice_4.png'
 import dice5 from '../images/dice_5.png'
 import dice6 from '../images/dice_6.png'
 
-function RollDice() {
-  const [currentDice, setCurrentDice] = useState(1)
-
-  const generateRandomNumber = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min)
-  }
-
+function RollDice({ currentDice, rolDice }) {
   const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6]
-
-  const rolDice = () => {
-    const randomNumber = generateRandomNumber(1, 7)
-    setCurrentDice(randomNumber)
-  }
 
   return (
     <DiceContainer>
@@ -57,8 +46,9 @@ const DiceContainer = styled.div`
 `
 
 const DiceImage = styled.img`
-  width: 220px; // Adjust as needed
-  height: auto; // Maintain aspect ratio
+  width: ${(props) => (props.isDice4 ? '220px' : '220px')};
+  border-radius: ${(props) => (props.isDice4 ? '30px' : '')};
+  height: auto;
 `
 
 const ButtonContainer = styled.div`
@@ -75,11 +65,23 @@ const Button = styled.button`
   border: 1px solid black;
   font-weight: 600;
   cursor: pointer;
-  margin: 10px 0; // Add some vertical spacing
+  margin: 10px 0;
+  transition: 0.4s background ease-in;
+  &:hover {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    transition: 0.3s background ease-in;
+  }
 `
 
 const BlackButton = styled(Button)`
-  // Extend the Button component for the black button
-  background-color: black;
   color: white;
+  background-color: black;
+  &:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    transition: 0.3s background ease-in;
+  }
 `

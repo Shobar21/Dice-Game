@@ -1,43 +1,56 @@
-import React, { useState } from 'react'
 import styled from 'styled-components'
+const NumberSelector = ({
+  setError,
+  error,
+  selectedNumber,
+  setSelectedNumber,
+}) => {
+  const arrNumber = [1, 2, 3, 4, 5, 6]
 
-function NumberSelect() {
-  const arr = [1, 2, 3, 4, 5, 6]
-  const [selectedNumber, setSelectedNumber] = useState()
-  console.log(selectedNumber)
+  const numberSelectorHandler = (value) => {
+    setSelectedNumber(value)
+    setError('')
+  }
+
   return (
-    <Container>
+    <NumberSelectorContainer>
+      <p className='error'>{error}</p>
       <div className='flex'>
-        {arr.map((value, i) => (
+        {arrNumber.map((value, i) => (
           <Box
+            isSelected={value === selectedNumber}
             key={i}
-            isSelected={selectedNumber === value} //prps
-            onClick={() => setSelectedNumber(value)}
+            onClick={() => numberSelectorHandler(value)}
           >
             {value}
           </Box>
         ))}
       </div>
-      <p>select Number</p>
-    </Container>
+      <p>Select Number</p>
+    </NumberSelectorContainer>
   )
 }
 
-export default NumberSelect
-const Container = styled.div`
-  /* margin: 20px; */
+export default NumberSelector
+
+const NumberSelectorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 
   .flex {
     display: flex;
     gap: 24px;
   }
   p {
-    margin: 15px;
     font-size: 24px;
-    font-weight: 700;
-    float: right;
+    font-weight: 700px;
+  }
+  .error {
+    color: red;
   }
 `
+
 const Box = styled.div`
   height: 72px;
   width: 72px;
@@ -47,5 +60,5 @@ const Box = styled.div`
   font-size: 24px;
   font-weight: 700;
   background-color: ${(props) => (props.isSelected ? 'black' : 'white')};
-  color: ${(props) => (props.isSelected ? 'white' : 'black')};
+  color: ${(props) => (!props.isSelected ? 'black' : 'white')};
 `
