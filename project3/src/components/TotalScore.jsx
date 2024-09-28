@@ -6,11 +6,14 @@ const Container = Styled.div`
      text-align:center;
     h1{
         font-size:100px;
-        line-height:100px
+        line-height:100px;
+        color:white;
+
     }
     p{
         font-size:24px;
-        font-weight: 500
+        font-weight: 500;
+        color:white;
     }
 `
 function TotalScore({ score }) {

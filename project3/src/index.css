@@ -6,4 +6,11 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: rgba(40, 40, 173, 1);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 11%,
+    rgba(40, 40, 173, 1) 40%,
+    rgba(0, 212, 255, 1) 63%
+  );
 }

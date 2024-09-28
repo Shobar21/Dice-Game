@@ -45,6 +45,7 @@ const NumberSelectorContainer = styled.div`
   p {
     font-size: 24px;
     font-weight: 700px;
+    color: white;
   }
   .error {
     color: red;

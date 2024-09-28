@@ -7,7 +7,13 @@ import dice4 from '../images/dice_4.png'
 import dice5 from '../images/dice_5.png'
 import dice6 from '../images/dice_6.png'
 
-function RollDice({ currentDice, rolDice }) {
+function RollDice({
+  currentDice,
+  rolDice,
+  restoreScore,
+  showRules,
+  setShowRules,
+}) {
   const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6]
 
   return (
@@ -21,8 +27,11 @@ function RollDice({ currentDice, rolDice }) {
       </div>
       <p>Click on Dice to roll</p>
       <ButtonContainer>
-        <Button>Reset Score</Button>
-        <BlackButton>Show Rules</BlackButton>{' '}
+        <Button onClick={restoreScore}>Reset Score</Button>
+        <BlackButton onClick={() => setShowRules((prev) => !prev)}>
+          {' '}
+          {showRules ? 'Hide' : 'Show'} Rules
+        </BlackButton>{' '}
         {/* Use the new styled component */}
       </ButtonContainer>
     </DiceContainer>
@@ -39,6 +48,7 @@ const DiceContainer = styled.div`
   p {
     font-size: 24px;
     font-weight: 500;
+    color: white;
   }
   .dice {
     cursor: pointer;

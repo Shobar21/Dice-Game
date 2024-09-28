@@ -12,6 +12,7 @@ const Container = styled.div`
   .content {
     h1 {
       font-size: 96px;
+      /* color: white; */
       white-space: nowrap;
     }
   }
