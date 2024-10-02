@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes, css } from 'styled-components'
 import dice1 from '../images/dice_1.png'
 import dice2 from '../images/dice_2.png'
 import dice3 from '../images/dice_3.png'
@@ -14,25 +14,33 @@ function RollDice({
   showRules,
   setShowRules,
 }) {
+  const [isRolling, setIsRolling] = useState(false)
   const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6]
+
+  const handleDiceRoll = () => {
+    setIsRolling(true) // Start the rolling animation
+    setTimeout(() => {
+      setIsRolling(false) // Stop the rolling animation after 1 second
+      rolDice() // Trigger the dice roll function
+    }, 1000) // Duration matches the animation duration
+  }
 
   return (
     <DiceContainer>
-      <div className='dice' onClick={rolDice}>
+      <div className='dice' onClick={handleDiceRoll}>
         <DiceImage
           src={diceImages[currentDice - 1]}
           alt={`Dice ${currentDice}`}
-          isDice4={currentDice === 4} // Conditional prop
+          isRolling={isRolling}
+          isDice4={currentDice === 4} // Conditional prop for dice 4 styling
         />
       </div>
       <p>Click on Dice to roll</p>
       <ButtonContainer>
         <Button onClick={restoreScore}>Reset Score</Button>
         <BlackButton onClick={() => setShowRules((prev) => !prev)}>
-          {' '}
           {showRules ? 'Hide' : 'Show'} Rules
-        </BlackButton>{' '}
-        {/* Use the new styled component */}
+        </BlackButton>
       </ButtonContainer>
     </DiceContainer>
   )
@@ -55,10 +63,34 @@ const DiceContainer = styled.div`
   }
 `
 
+// Keyframes for dice rotation
+const rollAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`
+
 const DiceImage = styled.img`
   width: ${(props) => (props.isDice4 ? '220px' : '220px')};
   border-radius: ${(props) => (props.isDice4 ? '30px' : '')};
   height: auto;
+  ${(props) =>
+    props.isRolling &&
+    css`
+      animation: ${rollAnimation} 1s ease;
+    `}
 `
 
 const ButtonContainer = styled.div`
