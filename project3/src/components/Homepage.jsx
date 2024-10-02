@@ -18,8 +18,9 @@ const Container = styled.div`
   }
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    text-align: left;
+    flex-direction: row; /* Align image and content side by side for tablet and larger */
+    text-align: left; /* Text aligned left */
+    justify-content: space-between; /* Space between the image and content */
   }
 
   .content {
@@ -27,6 +28,9 @@ const Container = styled.div`
 
     @media (min-width: 768px) {
       margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; /* Align content to the right */
     }
 
     h1 {

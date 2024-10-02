@@ -27,7 +27,7 @@ const NumberSelector = ({
           </Box>
         ))}
       </div>
-      <p>Select Number</p>
+      <p className='select-number'>Select Number</p>
     </NumberSelectorContainer>
   )
 }
@@ -39,54 +39,58 @@ const NumberSelectorContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 10px; /* Padding for mobile */
 
   .flex {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px; /* Smaller gap for mobile */
+    gap: 8px; /* Reduced gap for mobile */
     justify-content: center;
 
     @media (min-width: 768px) {
-      gap: 16px; /* Slightly larger gap for tablets */
+      gap: 16px; /* Larger gap for tablets */
     }
 
     @media (min-width: 1024px) {
-      gap: 20px; /* Larger gap for desktop */
+      gap: 20px; /* Largest gap for desktop */
     }
   }
 
-  p {
-    font-size: 16px;
+  .select-number {
+    font-size: 14px; /* Smaller font for mobile */
     font-weight: 700;
     color: white;
-    align-self: flex-end;
+    margin-top: 12px; /* Add space between boxes and text */
+    align-self: center; /* Center on mobile screens */
 
     @media (min-width: 768px) {
-      font-size: 20px; /* Slightly larger font for tablets */
+      font-size: 18px; /* Slightly larger font for tablets */
+      align-self: flex-end; /* Align to the right on larger screens */
     }
 
     @media (min-width: 1024px) {
-      font-size: 24px; /* Larger font for desktop */
+      font-size: 22px; /* Larger font for desktop */
     }
   }
 
   .error {
     color: red;
-    font-size: 14px;
+    font-size: 12px; /* Smaller font for mobile */
+    margin-bottom: 8px; /* Add spacing between error and boxes */
 
     @media (min-width: 768px) {
-      font-size: 16px; /* Slightly larger for tablets */
+      font-size: 14px; /* Slightly larger for tablets */
     }
   }
 `
 
 const Box = styled.div`
-  height: 48px; /* Smaller height for mobile */
-  width: 48px; /* Smaller width for mobile */
+  height: 40px; /* Smaller height for mobile */
+  width: 40px; /* Smaller width for mobile */
   border: 2px solid black;
   display: grid;
   place-items: center;
-  font-size: 18px;
+  font-size: 16px; /* Slightly smaller font for mobile */
   font-weight: 700;
   background-color: ${(props) => (props.isSelected ? 'black' : 'white')};
   color: ${(props) => (!props.isSelected ? 'black' : 'white')};
