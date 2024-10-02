@@ -11,6 +11,7 @@ function Gameplay() {
   const [currentDice, setCurrentDice] = useState(1)
   const [error, setError] = useState('')
   const [showRules, setShowRules] = useState(false)
+
   const generateRandomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min)
   }
@@ -65,9 +66,16 @@ export default Gameplay
 
 const MainContainer = styled.main`
   padding-top: 70px;
+
   .top_section {
     display: flex;
     justify-content: space-around;
     align-items: end;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
   }
 `

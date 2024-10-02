@@ -8,10 +8,10 @@ const Rules = () => {
         <p>Select any number</p>
         <p>Click on dice image</p>
         <p>
-          after click on dice if selected number is equal to dice number you
-          will get same point as dice{' '}
+          After clicking on the dice, if the selected number matches the dice
+          number, you will get the same points as the dice.
         </p>
-        <p>if you get wrong guess then 2 point will be dedcuted </p>
+        <p>If you guess wrong, 2 points will be deducted.</p>
       </div>
     </RulesContainer>
   )
@@ -26,10 +26,40 @@ const RulesContainer = styled.div`
   padding: 20px;
   margin-top: 40px;
   border-radius: 10px;
+
   h2 {
     font-size: 24px;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+    @media (max-width: 480px) {
+      font-size: 18px;
+    }
   }
+
   .text {
     margin-top: 24px;
+
+    p {
+      font-size: 18px;
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+      @media (max-width: 480px) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+    padding: 15px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 20px;
   }
 `

@@ -32,7 +32,7 @@ function RollDice({
           src={diceImages[currentDice - 1]}
           alt={`Dice ${currentDice}`}
           isRolling={isRolling}
-          isDice4={currentDice === 4} // Conditional prop for dice 4 styling
+          isDice4={currentDice === 4}
         />
       </div>
       <p>Click on Dice to roll</p>
@@ -53,11 +53,18 @@ const DiceContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+
   p {
-    font-size: 24px;
+    font-size: 18px; /* Adjusted font size for mobile */
     font-weight: 500;
     color: white;
+
+    @media (min-width: 768px) {
+      font-size: 24px; /* Larger font size for tablets and desktops */
+    }
   }
+
   .dice {
     cursor: pointer;
   }
@@ -83,47 +90,62 @@ const rollAnimation = keyframes`
 `
 
 const DiceImage = styled.img`
-  width: ${(props) => (props.isDice4 ? '220px' : '220px')};
-  border-radius: ${(props) => (props.isDice4 ? '30px' : '')};
+  width: 150px; /* Reduced size for mobile */
   height: auto;
+  border-radius: ${(props) =>
+    props.isDice4 ? '20px' : '0'}; /* Slight radius for dice 4 */
   ${(props) =>
     props.isRolling &&
     css`
       animation: ${rollAnimation} 1s ease;
     `}
+
+  @media (min-width: 768px) {
+    width: ${(props) =>
+      props.isDice4 ? '220px' : '220px'}; /* Larger size for desktop */
+  }
 `
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  align-items: center;
 `
 
 const Button = styled.button`
-  min-width: 220px;
-  padding: 15px 18px;
+  width: 100%; /* Full width on mobile */
+  max-width: 220px;
+  padding: 12px 18px; /* Adjusted padding for mobile */
   border-radius: 5px;
   background-color: white;
-  font-size: 18px;
+  font-size: 16px; /* Adjusted font size */
   border: 1px solid black;
   font-weight: 600;
   cursor: pointer;
-  margin: 10px 0;
   transition: 0.4s background ease-in;
+  margin: 5px 0; /* Reduced margin for mobile */
+
   &:hover {
     background-color: black;
     border: 1px solid black;
     color: white;
     transition: 0.3s background ease-in;
   }
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    padding: 15px 18px; /* Larger padding for bigger screens */
+    margin: 10px 0; /* Larger margin for desktop */
+  }
 `
 
 const BlackButton = styled(Button)`
-  color: white;
   background-color: black;
+  color: white;
+
   &:hover {
     background-color: white;
-    border: 1px solid black;
     color: black;
-    transition: 0.3s background ease-in;
   }
 `
