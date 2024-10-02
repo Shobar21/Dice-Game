@@ -18,11 +18,11 @@ function RollDice({
   const diceImages = [dice1, dice2, dice3, dice4, dice5, dice6]
 
   const handleDiceRoll = () => {
-    setIsRolling(true) // Start the rolling animation
+    setIsRolling(true)
     setTimeout(() => {
-      setIsRolling(false) // Stop the rolling animation after 1 second
-      rolDice() // Trigger the dice roll function
-    }, 1000) // Duration matches the animation duration
+      setIsRolling(false)
+      rolDice()
+    }, 1000)
   }
 
   return (
