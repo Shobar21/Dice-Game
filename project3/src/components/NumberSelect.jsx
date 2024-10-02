@@ -59,7 +59,7 @@ const NumberSelectorContainer = styled.div`
     font-size: 16px;
     font-weight: 700;
     color: white;
-    float: right;
+    align-self: flex-end;
 
     @media (min-width: 768px) {
       font-size: 20px; /* Slightly larger font for tablets */
